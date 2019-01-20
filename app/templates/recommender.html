@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div style="width: 100%; margin: 10px auto 50px auto; text-align: justify">
+        	<a href="{{ url_for('index') }}"><h1 style="text-align: center;">Findme</h1></a>
+
+            <h2>Find me a serie</h2>
+            <p>
+            	Add series that you like thanks to the search bar. <br><br>
+
+            	Then click on Find me a serie to watch now. 
+            </p>
+
+			<!--Search bar-->
+			<div class="container">
+			<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+			<!--<div class="col-md-6 col-md-offset-3">-->
+			<form class="navbar-form" method="post" action="{{ url_for('search') }}" role="search">
+			<div class="input-group">
+
+
+
+			<input type="text" placeholder="Find Series..." class="form-control">
+
+			<span class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			Filter
+			<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li><a href="#">Action</a></li>
+			<li><a href="#">Comedy</a></li>
+			<li><a href="#">Drama</a></li>
+			</ul>
+			</span>	
+
+
+			<span class="input-group-btn">
+			<!-- <button class="btn btn-primary" type="button"><img src="/static/open-iconic/svg/star.svg" alt="star"></button> -->
+			<button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button>
+			</span> 
+			</div>
+			</form>
+			</div>
+
+			<div class="col-lg-3"></div>
+
+			</div>
+			</div>
+			<!--END Search bar-->
+
+			<div class="row">
+			<button style=" margin: 50px auto 50px auto;" name="btn_recommender" class="btn btn-primary" type="submit">Find me a serie to watch now</button>
+			</div>
+
+
+        </div>
+    </div>
+{% endblock %}

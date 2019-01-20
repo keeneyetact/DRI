@@ -41,14 +41,51 @@ pipenv lock -r > requirements.txt
 
 ## Flask
 
-pipenv install Flask
+pipenv install Flask  
+pipenv run python app/__init__.py
 
-## bien utile
+## Et si on commençait les choses correctement ?
+
+Ce repo va nous permettre à travers cookiecutter de créer tout un environnement pour notre application Flask.
+
+Les dossiers nécessaires seront créés, les erreurs HTTP gérées etc. Il s'agit donc d'un environnement que vous pouvez utiliser pour démarrer toutes vos applications Flask.
+
+https://github.com/konstantint/cookiecutter-flask-boilerplate
+
+https://github.com/audreyr/cookiecutter
+
+## Bien utile
 
 https://medium.com/@greut/building-a-python-package-a-docker-image-using-pipenv-233d8793b6cc
+
+http://exploreflask.com/en/latest/organizing.html
+
+## À regarder
+
+https://realpython.com/flask-by-example-part-1-project-setup/
+
+https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--cms-25571
+
+https://stackoverflow.com/questions/30954599/what-is-the-significance-of-flask-bin-python-in-flask
+
+https://getbootstrap.com/
+
+## Termes
+
+Boilerplate
+
+shebang
 
 ## ElasticSearch
 
 pip install elasticsearch
+
+## useiconic
+
+https://useiconic.com/open
+
+## Lancer le projet
+
+pipenv run python run.py
 
 
