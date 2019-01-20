@@ -44,6 +44,10 @@ pipenv lock -r > requirements.txt
 pipenv install Flask  
 pipenv run python app/__init__.py
 
+### Get / Post
+
+https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
+
 ## Et si on commençait les choses correctement ?
 
 Ce repo va nous permettre à travers cookiecutter de créer tout un environnement pour notre application Flask.
@@ -83,6 +87,18 @@ pip install elasticsearch
 ## useiconic
 
 https://useiconic.com/open
+
+## jQuery
+
+https://jquery.com/download/
+
+## Popper
+
+https://stackoverflow.com/questions/45661863/bootstrap-min-js6-uncaught-error-bootstrap-dropdown-require-popper-js
+
+## Carousel
+
+https://bootsnipp.com/snippets/zDQkr
 
 ## Lancer le projet
 

@@ -28,6 +28,29 @@ def search():
 def recommender():
     return render_template('recommender.html')
 
+# #http://127.0.0.1:5000/movie/Friends
+# @app.route('/movie/<title>')
+# def movie(title):
+#     return render_template('movie.html', title=title)
+
+#http://127.0.0.1:5000/title/tt0108778
+@app.route('/title/<title>')
+def title(title):
+    w_title = ""
+    w_desc = ""
+    w_url = ""
+    if(title == "tt0108778"):
+        w_title = "Friends"
+        w_desc = "A great serie"
+        w_url = "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR0,0,182,268_AL_.jpg"
+    return render_template('movie.html', title=w_title, desc = w_desc, url = w_url)
+
+
+#http://127.0.0.1:5000/movie?title=Friends&description=A+great+serie
+@app.route('/movie', methods=['GET'])
+def daily_post():
+    #do your code here
+    return render_template("movie.html",title=request.args.get('title'), desc=request.args.get('description'))
 
 # Set up simple error handlers
 @app.errorhandler(404)

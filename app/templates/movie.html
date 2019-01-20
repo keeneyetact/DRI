@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}- {{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div style="width: 100%; margin: 10px auto 50px auto; text-align: justify">
+        	<a href="{{ url_for('index') }}"><h1 style="text-align: center;">Findme</h1></a>
+
+        	<!--Search bar-->
+			<div class="container">
+			<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+			<!--<div class="col-md-6 col-md-offset-3">-->
+			<form class="navbar-form" method="post" action="{{ url_for('search') }}" role="search">
+			<div class="input-group">
+
+
+
+			<input type="text" placeholder="Find Series..." class="form-control">
+
+			<span class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			Filter
+			<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li><a href="#">Action</a></li>
+			<li><a href="#">Comedy</a></li>
+			<li><a href="#">Drama</a></li>
+			</ul>
+			</span>	
+
+
+			<span class="input-group-btn">
+			<!-- <button class="btn btn-primary" type="button"><img src="/static/open-iconic/svg/star.svg" alt="star"></button> -->
+			<button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button>
+			</span> 
+			</div>
+			</form>
+			</div>
+
+			<div class="col-lg-3"></div>
+
+			</div>
+			</div>
+			<!--END Search bar-->
+
+            <h2>{{ title }}</h2>
+
+            <img src={{ url }}>
+
+            <p>{{ desc }}</p>
+
+
+
+
+        </div>
+    </div>
+{% endblock %}
