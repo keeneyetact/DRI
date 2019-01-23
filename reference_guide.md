@@ -74,6 +74,12 @@ https://stackoverflow.com/questions/30954599/what-is-the-significance-of-flask-b
 
 https://getbootstrap.com/
 
+https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--cms-25571
+
+https://github.com/svola/fantasticsearch
+
+http://jsfiddle.net/vxvyvyer/1/
+
 ## Termes
 
 Boilerplate
