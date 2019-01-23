@@ -97,6 +97,8 @@ https://medium.com/@greut/building-a-python-package-a-docker-image-using-pipenv-
 
 http://exploreflask.com/en/latest/organizing.html
 
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
 ## À regarder
 
 https://realpython.com/flask-by-example-part-1-project-setup/
@@ -146,3 +148,37 @@ https://bootsnipp.com/snippets/zDQkr
 ```bash
 pipenv run python run.py
 ```
+
+build l'image :
+
+```bash
+docker-compose up
+``` 
+
+run app :
+
+```bash
+docker run -p 5000:5000 -it drio4302c_app
+```
+
+## Mac
+
+Afficher les fichiers cachés sous macOS Mojave (utile pour éditer .gitignore par exemple) :
+
+```bash
+fn + CMD + Shift + .
+```
+
+```bash
+chflags nohidden /path/to/dir/.gitignore
+```
+
+```bash
+ls -al path/to/dir
+```
+
+```bash
+defaults write com.apple.Finder AppleShowAllFiles YES
+killall Finder
+```
+

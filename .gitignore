@@ -1,6 +1,10 @@
 # remove OS junk files
 [Tt]humbs.db
 *.DS_Store
+.DS_Store
+*/.DS_Store
 
 # others
 .ipynb_checkpoints
+*.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
