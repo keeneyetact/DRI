@@ -44,6 +44,14 @@ pipenv lock -r > requirements.txt
 pipenv install Flask  
 pipenv run python app/__init__.py
 
+## Scrapy
+
+pipenv install scrapy  
+
+## Pymongo
+
+pipenv install pymongo  
+
 ### Get / Post
 
 https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
@@ -109,5 +117,3 @@ https://bootsnipp.com/snippets/zDQkr
 ## Lancer le projet
 
 pipenv run python run.py
-
-
