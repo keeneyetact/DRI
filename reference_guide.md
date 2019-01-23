@@ -22,6 +22,7 @@ git push -u origin master
 
 http://sametmax.com/pipenv-solution-moderne-pour-remplacer-pip-et-virtualenv/
 https://github.com/v-barbosavaz/DataEngineerTools
+https://pipenv.readthedocs.io/en/latest/basics/
 
 mise à jour de pip, au niveau utilisateur pour ne pas casser le système
 ```bash
@@ -56,6 +57,10 @@ Ctrl + D
 Producing a requirements.txt file
 ```bash
 pipenv lock -r > requirements.txt
+```
+
+```bash
+pipenv lock --requirements > requirements.txt
 ```
 
 ## Flask
@@ -114,6 +119,10 @@ https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--
 https://github.com/svola/fantasticsearch
 
 http://jsfiddle.net/vxvyvyer/1/
+
+```bash
+pipenv install elasticsearch --skip-lock
+```
 
 ## Termes
 
@@ -182,3 +191,19 @@ defaults write com.apple.Finder AppleShowAllFiles YES
 killall Finder
 ```
 
+## Problème pipenv install
+
+Impossible d'installer twited : fatal error: 'stdio.h' file not found
+
+```bash
+xcode-select --install
+```
+
+```bash
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+```
+
+```bash
+pipenv lock --requirements > requirements.txt
+pip install -r requirements.txt
+```

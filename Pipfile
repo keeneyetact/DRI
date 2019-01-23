@@ -9,6 +9,7 @@ verify_ssl = true
 flask = "*"
 scrapy = "*"
 pymongo = "*"
+elasticsearch = "*"
 
 [requires]
 python_version = "3.7"
