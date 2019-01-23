@@ -3,7 +3,12 @@ Documentation du code. Répliquer le projet.
 
 ## Github
 
-git clone https://github.com/v-barbosavaz/DRIO4302C  
+On clone le projet :
+
+```bash
+git clone https://github.com/v-barbosavaz/DRIO4302C
+```
+
 cd DRIO4302C/  
 find . -name '.DS_Store' -type f -delete  
 touch .gitignore  
@@ -19,38 +24,58 @@ http://sametmax.com/pipenv-solution-moderne-pour-remplacer-pip-et-virtualenv/
 https://github.com/v-barbosavaz/DataEngineerTools
 
 mise à jour de pip, au niveau utilisateur pour ne pas casser le système
+```bash
 python -m pip install pip --upgrade --user
+```
 
 installation de pipenv
+```bash
 python -m pip install pipenv --user
+```
 
 à la racine du projet
+```bash
 pipenv install
+```
 
 lancer un terminal à l'interieur de cet environnment
+```bash
 pipenv shell
+```
 
 installer de nouvelles librairies
+```bash
 pipenv install <votre_librairie>
+```
 
 sortir du shell
+```bash
 Ctrl + D
+```
 
 Producing a requirements.txt file
+```bash
 pipenv lock -r > requirements.txt
+```
 
 ## Flask
 
+```bash
 pipenv install Flask  
 pipenv run python app/__init__.py
+```
 
 ## Scrapy
 
-pipenv install scrapy  
+```bash
+pipenv install scrapy
+```
 
 ## Pymongo
 
-pipenv install pymongo  
+```bash
+pipenv install pymongo
+```
 
 ### Get / Post
 
@@ -96,7 +121,9 @@ shebang
 
 ## ElasticSearch
 
+```bash
 pip install elasticsearch
+```
 
 ## useiconic
 
@@ -116,4 +143,6 @@ https://bootsnipp.com/snippets/zDQkr
 
 ## Lancer le projet
 
+```bash
 pipenv run python run.py
+```
