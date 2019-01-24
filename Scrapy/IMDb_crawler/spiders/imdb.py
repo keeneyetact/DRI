@@ -25,6 +25,8 @@ class ImdbSpider(scrapy.Spider):
                 image = tv_serie.css(".lister-item-image a img")
 
                 image_url = image.css("::attr(src)").extract_first()
+                # TODO: changer l'url de l'image
+                
                 id = image.css("::attr(data-tconst)").extract_first()
 
                 tv_serie_link = content.css("h3 a::attr(href)").extract_first()

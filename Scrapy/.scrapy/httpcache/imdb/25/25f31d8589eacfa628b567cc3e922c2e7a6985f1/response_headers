@@ -1,0 +1,12 @@
+Content-Type: text/html;charset=UTF-8
+Server: Server
+Date: Thu, 24 Jan 2019 09:29:28 GMT
+Strict-Transport-Security: max-age=47474747; includeSubDomains; preload
+Content-Security-Policy: frame-ancestors 'self' imdb.com *.imdb.com *.media-imdb.com withoutabox.com *.withoutabox.com amazon.com *.amazon.com amazon.co.uk *.amazon.co.uk amazon.de *.amazon.de translate.google.com images.google.com www.google.com www.google.co.uk search.aol.com bing.com www.bing.com
+Content-Language: en
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+X-Amz-Rid: F80C3813YZKPEV0Z8M8S
+X-Cache: Miss from cloudfront
+Via: 1.1 72bf939c74620436ee2fbb502cc1513d.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: dlgrv5HHANnYK8-7KD1IuEdqVArb57PBzgwc3WNCDx3-7-On3mHu7g==
