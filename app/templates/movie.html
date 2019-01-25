@@ -30,13 +30,13 @@
 			<li><a href="#">Comedy</a></li>
 			<li><a href="#">Drama</a></li>
 			</ul>
-			</span>	
+			</span>
 
 
 			<span class="input-group-btn">
 			<!-- <button class="btn btn-primary" type="button"><img src="/static/open-iconic/svg/star.svg" alt="star"></button> -->
 			<button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button>
-			</span> 
+			</span>
 			</div>
 			</form>
 			</div>
@@ -47,15 +47,33 @@
 			</div>
 			<!--END Search bar-->
 
-            <h2>{{ title }}</h2>
+                <div class="container">
+                    <div class="row">
 
-            <img src={{ url }}>
+                      <div class="col-md-4">
+                          <h2>{{ title }}</h2>
+                          <img src={{ url }}>
+                      </div>
 
-            <p>{{ desc }}</p>
+                      <div class="col-lg-4">
+                        <div class="d-inline-flex justify-content-center">
+                        <p>{{ desc }}</p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                      <ul>
+                        {% for r in rec%}
+                            <li><a href="{{ url_for('title', title=r[1])}}">{{ r[0] }}</a></li>
+                        {% endfor %}
+                      </ul>
+                      </div>
 
 
 
 
+                    </div>
+                </div>
         </div>
     </div>
 {% endblock %}

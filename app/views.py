@@ -4,9 +4,12 @@
 from flask import Flask, render_template, \
 request, url_for
 from elasticsearch import Elasticsearch
+from flask_pymongo import PyMongo
 
 from app import app
 
+app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
+mongo = PyMongo(app)
 
 # @app.route("/")
 # def hello():
@@ -16,10 +19,10 @@ from app import app
 # def hello_name(name):
 #     return "Hello {}!".format(name)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')#, methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST' or request.method == 'GET':
-        print(request.form)
+    #if request.method == 'POST' or request.method == 'GET':
+    #    print(request.form)
         # if request.form['btn_recommender']: #== 'Do Something':
         #     return redirect(url_for('recommender'))
 
@@ -38,17 +41,26 @@ def recommender():
 # def movie(title):
 #     return render_template('movie.html', title=title)
 
-#http://127.0.0.1:5000/title/tt0108778
+
+
+#http://127.0.0.1:5000/title/0108778
 @app.route('/title/<title>')
 def title(title):
-    w_title = ""
-    w_desc = ""
-    w_url = ""
-    if(title == "tt0108778"):
-        w_title = "Friends"
-        w_desc = "A great serie"
-        w_url = "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR0,0,182,268_AL_.jpg"
-    return render_template('movie.html', title=w_title, desc = w_desc, url = w_url)
+    serie = mongo.db.tv_series.find_one({"IMDB_id": title})
+    if serie is None:
+        return render_template('404.html')
+
+    w_title = serie["title"]
+    w_desc = serie["description"]
+    w_url = serie["image_url"]
+
+    try:
+        recommandations = [(mongo.db.tv_series.find_one({"IMDB_id": rec_id})["title"],rec_id) for rec_id in serie["recommandations"]]
+    except Exception as e:
+        print(e)
+        recommandations = ""
+    return render_template('movie.html', title=w_title, desc = w_desc, url = w_url, rec = recommandations)
+
 
 
 #http://127.0.0.1:5000/movie?title=Friends&description=A+great+serie
