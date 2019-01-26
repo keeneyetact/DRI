@@ -20,10 +20,9 @@ class MongoPipeline(object):
 class TextPipeline(object):
 
     def process_item(self, item, spider):
-        if item['genre']:
-            item['genre'] = self.clean(item['genre'])
-        if item['description']:
-            item['description'] = self.clean(item['description'])
+        for key in ['genre','description','title','storyline']:
+            if item[key]:
+                item[key] = self.clean(item[key])
         if item['popularity_rank']:
             item['popularity_rank'] = item['popularity_rank'].replace('.','')
         if item['IMDB_id']:

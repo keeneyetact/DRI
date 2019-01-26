@@ -4,6 +4,7 @@
 from flask import Flask, render_template, \
 request, url_for
 from elasticsearch import Elasticsearch
+from flask_pymongo import PyMongo
 
 from app import app
 
@@ -28,6 +29,9 @@ es_client = Elasticsearch('http://localhost:9200')
 
 es_client.ping()
 
+app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
+mongo = PyMongo(app)
+
 # @app.route("/")
 # def hello():
 #     return "Hello World!"
@@ -35,6 +39,7 @@ es_client.ping()
 # @app.route('/<name>')
 # def hello_name(name):
 #     return "Hello {}!".format(name)
+
 
 @app.route('/search/results', methods=['GET', 'POST'])
 def search_request():
@@ -61,14 +66,16 @@ def search_request():
 def home():
     return render_template('search.html')
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/')#, methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST' or request.method == 'GET':
-        print(request.form)
+    #if request.method == 'POST' or request.method == 'GET':
+    #    print(request.form)
         # if request.form['btn_recommender']: #== 'Do Something':
         #     return redirect(url_for('recommender'))
+    top15 = [mongo.db.tv_series.find_one({"popularity_rank": str(k)}) for k in range(1,16)]
 
-    return render_template('index.html')
+    return render_template('index.html',top = top15)
 
 @app.route('/search')
 def search():
@@ -83,17 +90,26 @@ def recommender():
 # def movie(title):
 #     return render_template('movie.html', title=title)
 
-#http://127.0.0.1:5000/title/tt0108778
+
+
+#http://127.0.0.1:5000/title/0108778
 @app.route('/title/<title>')
 def title(title):
-    w_title = ""
-    w_desc = ""
-    w_url = ""
-    if(title == "tt0108778"):
-        w_title = "Friends"
-        w_desc = "A great serie"
-        w_url = "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR0,0,182,268_AL_.jpg"
-    return render_template('movie.html', title=w_title, desc = w_desc, url = w_url)
+    serie = mongo.db.tv_series.find_one({"IMDB_id": title})
+    if serie is None:
+        return render_template('404.html')
+
+    try:
+        l_recommandations = []
+        for rec_id in serie["recommandations"]:
+            rec = mongo.db.tv_series.find_one({"IMDB_id": rec_id})
+            l_recommandations.append(rec)
+
+    except Exception as e:
+        print(e)
+        recommandations = ""
+    return render_template('movie.html', **serie, l_rec = l_recommandations)
+
 
 
 #http://127.0.0.1:5000/movie?title=Friends&description=A+great+serie
