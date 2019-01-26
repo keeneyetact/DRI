@@ -25,8 +25,9 @@ def index():
     #    print(request.form)
         # if request.form['btn_recommender']: #== 'Do Something':
         #     return redirect(url_for('recommender'))
+    top15 = [mongo.db.tv_series.find_one({"popularity_rank": str(k)}) for k in range(1,16)]
 
-    return render_template('index.html')
+    return render_template('index.html',top = top15)
 
 @app.route('/search')
 def search():
@@ -50,16 +51,16 @@ def title(title):
     if serie is None:
         return render_template('404.html')
 
-    w_title = serie["title"]
-    w_desc = serie["description"]
-    w_url = serie["image_url"]
-
     try:
-        recommandations = [(mongo.db.tv_series.find_one({"IMDB_id": rec_id})["title"],rec_id) for rec_id in serie["recommandations"]]
+        l_recommandations = []
+        for rec_id in serie["recommandations"]:
+            rec = mongo.db.tv_series.find_one({"IMDB_id": rec_id})
+            l_recommandations.append(rec)
+
     except Exception as e:
         print(e)
         recommandations = ""
-    return render_template('movie.html', title=w_title, desc = w_desc, url = w_url, rec = recommandations)
+    return render_template('movie.html', **serie, l_rec = l_recommandations)
 
 
 

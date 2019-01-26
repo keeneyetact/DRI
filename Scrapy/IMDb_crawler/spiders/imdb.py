@@ -24,9 +24,8 @@ class ImdbSpider(scrapy.Spider):
 
                 image = tv_serie.css(".lister-item-image a img")
 
-                image_url = image.css("::attr(src)").extract_first()
-                # TODO: changer l'url de l'image
-                
+                #image_url = image.css("::attr(src)").extract_first()
+
                 id = image.css("::attr(data-tconst)").extract_first()
 
                 tv_serie_link = content.css("h3 a::attr(href)").extract_first()
@@ -38,17 +37,17 @@ class ImdbSpider(scrapy.Spider):
                     "popularity_rank":rank,
                     "title":title,
                     "year":year,
-                    "image_url":image_url,
+                    #"image_url":image_url,
                     "duration":duration,
                     "genre":genre,
-                    "recommandations":self.get_recommandations(response),
+                    "recommandations":self.get_more(response),
                     "description":description
                 }
                 # meta nous permet de ne pas yield toute suite les informations
                 # on effectue une requete sur la page de la serie elle-même pour scraper plus d'infos
                 #yield data
 
-                yield Request(tv_serie_link, callback=self.get_recommandations, meta={"infos":data})
+                yield Request(tv_serie_link, callback=self.get_more, meta={"infos":data})
 
             except:
                 #yield {"error":rank}
@@ -59,7 +58,7 @@ class ImdbSpider(scrapy.Spider):
         yield Request(link, callback=self.parse)
 
 
-    def get_recommandations(self,response):
+    def get_more(self,response):
         new_data = response.meta.get("infos").copy()
         new_data["recommandations"] = []
 
@@ -70,6 +69,6 @@ class ImdbSpider(scrapy.Spider):
         except:
             pass
 
-        #new_data.update(response.meta.get("infos"))
-        #yield new_data
+        new_data["storyline"] = response.xpath('//*[@id="titleStoryLine"]/div[1]/p/span').css('::text').extract_first()
+        new_data["image_url"] = response.xpath('//*[@id="title-overview-widget"]/div[1]/div[4]/div[1]/a/img').css('::attr(src)').extract_first()
         yield ImdbTvSerie(new_data)

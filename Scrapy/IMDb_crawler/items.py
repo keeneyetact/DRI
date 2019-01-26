@@ -25,3 +25,4 @@ class ImdbTvSerie(scrapy.Item):
     recommandations = scrapy.Field()
     description = scrapy.Field()
     recommandations = scrapy.Field()
+    storyline = scrapy.Field()

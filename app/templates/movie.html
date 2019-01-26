@@ -50,29 +50,73 @@
                 <div class="container">
                     <div class="row">
 
-                      <div class="col-md-4">
+                      <div class="col-s-3 mt-5 ml-3 mr-3 mb-2 ">
+                        <div class="card border-primary">
+                        <img class="card-img-top rounded mt-2 mx-auto d-block"  style="max-width: 70%; height: auto;" src="{{image_url}}" alt="">
+                        <div class="card-body mx-auto">
                           <h2>{{ title }}</h2>
-                          <img src={{ url }}>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">{{year}}</li>
+                            <li class="list-group-item">Duration: {{duration}}</li>
+                          <li class="list-group-item">Ranking: {{popularity_rank}}</li>
+                          <li class="list-group-item"><img style="max-width: 7%; height: auto;" src="{{url_for('static', filename='img/star-gold-256.png')}}" alt="">    {{rate}}/10</li>
+                          <li class="list-group-item">{{genre}}</li>
+                        </ul>
+                      </div>
                       </div>
 
-                      <div class="col-lg-4">
+                      <div class="col-lg-5 mt-5 mr-2">
                         <div class="d-inline-flex justify-content-center">
-                        <p>{{ desc }}</p>
+                          <!-- <p><b>Description:</b>{{ description }}</p> -->
+                          <p ><b>Storyline:  </b>{{ storyline }}</p>
                         </div>
                       </div>
 
-                      <div class="col-md-4">
+
+
+
+                      <div class="card mt-5" style="width: 15rem;">
+                        <div class="card-header">
+                          Recommandations
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for r in l_rec%}
+                            {% if r["title"] %}
+
+                          <li class="list-group-item">
+                            <img style="max-width: 10%; height: auto;" src="{{r["image_url"]}}" alt="">
+                            <a href="{{ url_for('title', title=r["IMDB_id"])}}">{{ r["title"] }}</a>
+                          </li>
+
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                      </div>
+                      <!-- <div class="col-md-4">
                       <ul>
-                        {% for r in rec%}
+                        {% for r in l_rec%}
                             <li><a href="{{ url_for('title', title=r[1])}}">{{ r[0] }}</a></li>
                         {% endfor %}
                       </ul>
-                      </div>
-
-
-
+                      </div> -->
 
                     </div>
+                    <!-- end row -->
+
+
+                    <!-- <div class="row">
+                      {% for r in l_rec%}
+                            <div class="card ml-3 mr-3 mb-2 border-primary">
+                              <a href="{{ url_for('title', title=r["IMDB_id"])}}"><img class="card-img-top  rounded mx-auto d-block"  style="max-width: 70%; height: auto;" src="{{r["image_url"]}}" alt=""></a>
+                              <div class="card-body mx-auto">
+                                <a href="{{ url_for('title', title=r["IMDB_id"])}}">{{ r["title"] }}</a>
+                              </div>
+                            </div>
+                      {% endfor %}
+                    </div> -->
+                    <!-- end row -->
+
                 </div>
         </div>
     </div>
