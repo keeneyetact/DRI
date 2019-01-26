@@ -7,6 +7,26 @@ from elasticsearch import Elasticsearch
 
 from app import app
 
+#es = Elasticsearch('http://localhost:9200')
+#es = Elasticsearch(hosts="localhost")
+# es = Elasticsearch('10.0.1.10', port=9200)
+
+
+# document = {
+#     "name":"Decision Trees", 
+#     "description":"A decision tree is a decision support tool that uses a tree-like graph or model of decisions and their possible consequences, including chance-event outcomes, resource costs, and utility. Take a look at the image to get a sense of how it looks like.",
+#     "algo_type":"Supervised Learning"
+# }
+
+# res = es.index(index="algorithms", doc_type='algo', id=1, body=document)
+# print(res['result'])
+
+LOCAL = True
+
+#es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
+es_client = Elasticsearch('http://localhost:9200')
+
+es_client.ping()
 
 # @app.route("/")
 # def hello():
@@ -15,6 +35,31 @@ from app import app
 # @app.route('/<name>')
 # def hello_name(name):
 #     return "Hello {}!".format(name)
+
+@app.route('/search/results', methods=['GET', 'POST'])
+def search_request():
+    search_term = request.form["input"]
+    res = es.search(
+        index="scrape-sysadmins", 
+        size=20, 
+        body={
+            "query": {
+                "multi_match" : {
+                    "query": search_term, 
+                    "fields": [
+                        "url", 
+                        "title", 
+                        "tags"
+                    ] 
+                }
+            }
+        }
+    )
+    return render_template('results.html', res=res )
+
+@app.route('/searchh')
+def home():
+    return render_template('search.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

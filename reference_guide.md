@@ -70,6 +70,28 @@ pipenv install Flask
 pipenv run python app/__init__.py
 ```
 
+## MongoDB
+
+### Installation
+
+https://treehouse.github.io/installation-guides/mac/mongo-mac.html
+
+#### Install and Run MongoDB with Homebrew
+
+```bash
+brew update
+brew install mongodb
+mkdir -p /data/db
+sudo chown -R `id -un` /data/db
+mongod
+mongo
+quit()
+ctrl-c
+```
+
+
+
+
 ## Scrapy
 
 ```bash
@@ -206,4 +228,106 @@ open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10
 ```bash
 pipenv lock --requirements > requirements.txt
 pip install -r requirements.txt
+```
+
+## Docker
+
+Bien quitter docker :
+
+```bash
+docker-compose down
+```
+
+```bash
+docker container ls
+```
+
+```bash
+docker images -a
+```
+
+```bash
+docker image prune -a
+```
+
+```bash
+docker images -aq
+```
+
+```bash
+docker images
+```
+
+```bash
+docker images --help
+```
+
+```bash
+docker ps
+```
+
+```bash
+docker ps -a
+```
+
+```bash
+docker rm 5f4fb47a5716
+```
+
+```bash
+docker-compose ps
+```
+
+```bash
+docker-compose logs -f app
+```
+
+```bash
+docker-compose ps -a
+```
+
+```bash
+docker rmi $(docker images -aq)
+```
+
+```bash
+docker rm $(docker ps -aq)
+```
+
+```bash
+docker-compose up -d
+```
+
+Ouvrir le bash de notre image docker :
+
+```bash
+docker run -it --entrypoint=/bin/bash drio4302c_app
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
 ```
