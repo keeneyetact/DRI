@@ -4,9 +4,17 @@
 .DS_Store
 */.DS_Store
 
-# others
+# Python
+**/__pycache__/***
+__pycache__/
+
+
+data
+
+# Scrapy stuff:
+.scrapy
+
+# Jupyter Notebook
 .ipynb_checkpoints
 *.ipynb_checkpoints/*
 */.ipynb_checkpoints/*
-**/__pycache__/***
-data

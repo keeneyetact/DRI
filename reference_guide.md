@@ -18,6 +18,8 @@ git add .
 git commit -m "initial commit"  
 git push -u origin master  
 
+https://github.com/github/gitignore
+
 ## Pipenv
 
 http://sametmax.com/pipenv-solution-moderne-pour-remplacer-pip-et-virtualenv/
