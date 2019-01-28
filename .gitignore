@@ -6,9 +6,8 @@
 
 # Python
 **/__pycache__/***
+**/.scrapy/***
 __pycache__/
-
-
 data
 
 # Scrapy stuff:
