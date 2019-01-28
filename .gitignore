@@ -6,13 +6,8 @@
 
 # Python
 **/__pycache__/***
-<<<<<<< HEAD
 **/.scrapy/***
-=======
 __pycache__/
-
-
->>>>>>> 26c72c95cdeb0e87a7c4656a7c4f0939f4aff4c9
 data
 
 # Scrapy stuff:
