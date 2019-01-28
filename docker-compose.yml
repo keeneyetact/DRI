@@ -1,22 +1,29 @@
 version: '3'
 
 services:
-  #mongo:
-  #  image: mongo
-  #  container_name: mongo
-  #  environment:
-  #    - MONGO_DATA_DIR=/data/db
-  #    - MONGO_LOG_DIR=/dev/null
-  #  volumes:
-  #    - ./data/mongo:/data/db
-  #  ports:
-  #      - 27018:27017
+
   app:
     build: .
     ports:
-     - "5000:5000"
+      - "5000:5000"
     volumes:
-     - .:/code
+      - .:/code
+    network_mode: host
+    #command: python run.py
+    depends_on:
+      - mongo
+      - elastic
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/mongo:/data/db
+    ports:
+      - 27018:27017
      
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
@@ -26,3 +33,6 @@ services:
       - discovery.type=single-node
     ports:
       - "9200:9200"
+    depends_on:
+      - mongo
+    

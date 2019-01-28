@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, \
-request, url_for
+request, url_for, make_response, redirect
 from elasticsearch import Elasticsearch
 from flask_pymongo import PyMongo
 
@@ -25,9 +25,9 @@ from app import app
 LOCAL = True
 
 #es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
-es_client = Elasticsearch('http://localhost:9200')
+#es_client = Elasticsearch('http://localhost:9200')
 
-es_client.ping()
+#es_client.ping()
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
 mongo = PyMongo(app)
@@ -39,6 +39,13 @@ mongo = PyMongo(app)
 # @app.route('/<name>')
 # def hello_name(name):
 #     return "Hello {}!".format(name)
+
+def unlike(id_title):
+    try:
+        like = request.cookies.get(id_title)
+    except Exception as e:
+        print(0)
+
 
 
 @app.route('/search/results', methods=['GET', 'POST'])
@@ -117,6 +124,35 @@ def title(title):
 def daily_post():
     #do your code here
     return render_template("movie.html",title=request.args.get('title'), desc=request.args.get('description'))
+
+
+@app.route('/title', methods= ['POST'])
+def setcookie2():
+    if request.method == 'POST':
+        user = request.form['nm']
+
+    resp = make_response(redirect(url_for('title', title=user)) )
+    resp.set_cookie('userID', user)
+
+    return resp
+
+@app.route('/setcookie', methods = ['POST', 'GET'])
+def setcookie():
+    if request.method == 'POST':
+        user = request.form['nm']
+
+    #resp = make_response(redirect('/movie'))
+    resp = make_response("setting_cookie") 
+    #resp = make_response(render_template('readcookie.html'))
+    resp.set_cookie('userID', user)
+
+    return resp
+    #return render_template("movie.html",title=request.args.get('title'), desc=request.args.get('description'))
+
+@app.route('/getcookie')
+def getcookie():
+    name = request.cookies.get('userID')
+    return '<h1>welcome '+name+'</h1>'
 
 # Set up simple error handlers
 @app.errorhandler(404)

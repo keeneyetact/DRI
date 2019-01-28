@@ -52,6 +52,14 @@
 
                       <div class="col-s-3 mt-5 ml-3 mr-3 mb-2 ">
                         <div class="card border-primary">
+                          <!-- <button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button> -->
+
+                          <form action = "/title" method = "POST">
+                            <input type="hidden" name="nm" value="{{ IMDB_id }}" />
+         <button class="btn btn-primary" type = 'submit' value = 'Login'/><span class="oi oi-heart" title="heart" aria-hidden="true"></span> </button>
+      </form>
+
+
                         <img class="card-img-top rounded mt-2 mx-auto d-block"  style="max-width: 70%; height: auto;" src="{{image_url}}" alt="">
                         <div class="card-body mx-auto">
                           <h2>{{ title }}</h2>
