@@ -8,11 +8,11 @@ services:
       - "5000:5000"
     volumes:
       - .:/code
-    network_mode: host
-    #command: python run.py
+    #network_mode: host
     depends_on:
       - mongo
       - elastic
+    command: python run.py
 
   mongo:
     image: mongo
@@ -24,7 +24,7 @@ services:
       - ./data/mongo:/data/db
     ports:
       - 27018:27017
-     
+
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     container_name: elasticsearch
@@ -35,4 +35,3 @@ services:
       - "9200:9200"
     depends_on:
       - mongo
-    

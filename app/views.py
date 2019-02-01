@@ -14,7 +14,7 @@ from app import app
 
 
 # document = {
-#     "name":"Decision Trees", 
+#     "name":"Decision Trees",
 #     "description":"A decision tree is a decision support tool that uses a tree-like graph or model of decisions and their possible consequences, including chance-event outcomes, resource costs, and utility. Take a look at the image to get a sense of how it looks like.",
 #     "algo_type":"Supervised Learning"
 # }
@@ -29,7 +29,7 @@ LOCAL = True
 
 #es_client.ping()
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
+app.config["MONGO_URI"] = "mongodb://localhost:27018/test"
 mongo = PyMongo(app)
 
 # @app.route("/")
@@ -52,17 +52,17 @@ def unlike(id_title):
 def search_request():
     search_term = request.form["input"]
     res = es.search(
-        index="scrape-sysadmins", 
-        size=20, 
+        index="scrape-sysadmins",
+        size=20,
         body={
             "query": {
                 "multi_match" : {
-                    "query": search_term, 
+                    "query": search_term,
                     "fields": [
-                        "url", 
-                        "title", 
+                        "url",
+                        "title",
                         "tags"
-                    ] 
+                    ]
                 }
             }
         }
@@ -142,7 +142,7 @@ def setcookie():
         user = request.form['nm']
 
     #resp = make_response(redirect('/movie'))
-    resp = make_response("setting_cookie") 
+    resp = make_response("setting_cookie")
     #resp = make_response(render_template('readcookie.html'))
     resp.set_cookie('userID', user)
 
