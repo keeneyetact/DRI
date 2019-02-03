@@ -1,4 +1,5 @@
-# DRIO4302C
+# DRIO4302C - Data Engineering
+
 - Course : DRIO-4302C Data Engineering
 - Students : Vincent Barbosa Vaz, William Cardoso
 - Teacher : Daniel Courivaud, Raphaël Courivaud
@@ -7,12 +8,26 @@
 - stockage MongoDB
 - interface Flask d'interrogation de la DB
 
-# Le projet (système de recommendation)
+## The project
 
-Scrapper IMDb (Allociné)  
-Récupérer les séries et leur genre  
+Crawling/scraping of [IMDb](https://www.imdb.com/) for series, with Scrapy.
 
-L'utilisateur dit les séries qu'il a vu, ou alors renseigne les genres qu'il aime  
-On lui proposer d'autres séries similaires  
+Save data into MongoDB database.
 
-On peut faire pareil avec les acteurs, etc.
+Create a Flask web-app to display the data.
+
+The user likes series he loves (through Elasticsearch), the app match the bests series to watch.
+
+# Run the project
+
+Clone it :
+
+```bash
+git clone https://github.com/v-barbosavaz/DRIO4302C
+```
+
+Then :
+
+```bash
+docker-compose up -d
+```
