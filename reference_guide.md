@@ -11,7 +11,7 @@ Document à destination des développeurs. Vous trouverez toutes les information
 6. [Scrapy](#scrapy)
 7. [Pymongo](#pymongo)
 8. [Docker](#docker)
-	8.1 [Cheat sheet Docker](#cheat-sheet-docker)
+	1. [Cheat sheet Docker](#cheat-sheet-docker)
 
 <a name="github"></a>
 ## Github
