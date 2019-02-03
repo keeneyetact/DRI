@@ -1,12 +1,12 @@
-# DRIO4302C - Data Engineering
+# IMDb_app
 
 - Course : DRIO-4302C Data Engineering
 - Students : Vincent Barbosa Vaz, William Cardoso
 - Teacher : Daniel Courivaud, Raphaël Courivaud
 
-- recueil de données (scraping ou DB Open Data)
-- stockage MongoDB
-- interface Flask d'interrogation de la DB
+# DISCLAIMER
+
+This project is for informational and educational purposes, do not use it for business purposes.
 
 ## The project
 
