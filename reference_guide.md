@@ -2,6 +2,18 @@
 
 Document à destination des développeurs. Vous trouverez toutes les informations nécessaires pour reproduire un projet similaire.
 
+# Table of contents
+1. [Github](#github)
+2. [Commandes utiles](#1)
+3. [Pipenv](#2)
+4. [Flask](#3)
+5. [MongoDB](#4)
+6. [Scrapy](#5)
+7. [Pymongo](#6)
+8. [Docker](#7)
+	1. [Cheat sheet Docker](#2)
+
+<a name="github"></a>
 ## Github
 
 Créez un repository sur Github. Puis clonez-le sur votre machine :
@@ -10,7 +22,7 @@ Créez un repository sur Github. Puis clonez-le sur votre machine :
 git clone https://github.com/v-barbosavaz/DRIO4302C
 ```
 
-### Commandes utiles :
+## Commandes utiles
 
 Se déplacer dans le répertoire de travail :
 
@@ -50,6 +62,27 @@ Un workflow assez simple d'utilisation de Git :
 git add .
 git commit -m "initial commit"
 git push -u origin master
+```
+
+## Mac
+
+Afficher les fichiers cachés sous macOS Mojave (utile pour éditer .gitignore par exemple) :
+
+```bash
+fn + CMD + Shift + .
+```
+
+```bash
+chflags nohidden /path/to/dir/.gitignore
+```
+
+```bash
+ls -al path/to/dir
+```
+
+```bash
+defaults write com.apple.Finder AppleShowAllFiles YES
+killall Finder
 ```
 
 ## Pipenv
@@ -240,26 +273,7 @@ http://0.0.0.0:5000/
 http://localhost:9200/
 
 
-## Mac
 
-Afficher les fichiers cachés sous macOS Mojave (utile pour éditer .gitignore par exemple) :
-
-```bash
-fn + CMD + Shift + .
-```
-
-```bash
-chflags nohidden /path/to/dir/.gitignore
-```
-
-```bash
-ls -al path/to/dir
-```
-
-```bash
-defaults write com.apple.Finder AppleShowAllFiles YES
-killall Finder
-```
 
 ## Problème pipenv install
 
@@ -280,16 +294,6 @@ pip install -r requirements.txt
 
 ## Docker
 
-Bien quitter docker :
-
-```bash
-docker-compose down
-```
-
-```bash
-docker container ls
-```
-
 ```bash
 docker images -a
 ```
@@ -308,10 +312,6 @@ docker images
 
 ```bash
 docker images --help
-```
-
-```bash
-docker ps
 ```
 
 ```bash
@@ -346,31 +346,72 @@ docker rm $(docker ps -aq)
 docker-compose up -d
 ```
 
-Ouvrir le bash de notre image docker :
-
+Open bash in docker image :
 ```bash
 docker run -it --entrypoint=/bin/bash drio4302c_app
 ```
 
-```bash
+### Cheat sheet Docker
 
+List the running containers
+```bash
+docker ps
 ```
 
-### Cheat sheet
+Stops containers and removes containers, networks, volumes, and images created by docker-compose up
+```bash
+docker-compose down
+```
+
+List all running containers
+```bash
+docker container ls
+```
+
+List all containers, even those not running
+```bash
+docker container ls -a
+```
+
+List all images on this machine
+```bash
+docker image ls -a
+```
+
+Remove specified image from this machine
+```bash
+docker image rm <image id>
+```
+
+Remove all images from this machine
+```bash
+docker image rm $(docker image ls -a -q)
+```
+
+Remove all containers
+```bash
+docker container rm $(docker container ls -a -q)
+```
+
+Remove specified container from this machine
+```bash
+docker container rm <hash> 
+```
+
+Gracefully stop the specified container
+```bash
+docker container stop <hash>
+```
+
+Force shutdown of the specified container
+```bash
+docker container kill <hash> 
+```
 
 ```bash
 docker build -t friendlyhello .  # Create image using this directory's Dockerfile
 docker run -p 4000:80 friendlyhello  # Run "friendlyname" mapping port 4000 to 80
 docker run -d -p 4000:80 friendlyhello         # Same thing, but in detached mode
-docker container ls                                # List all running containers
-docker container ls -a             # List all containers, even those not running
-docker container stop <hash>           # Gracefully stop the specified container
-docker container kill <hash>         # Force shutdown of the specified container
-docker container rm <hash>        # Remove specified container from this machine
-docker container rm $(docker container ls -a -q)         # Remove all containers
-docker image ls -a                             # List all images on this machine
-docker image rm <image id>            # Remove specified image from this machine
-docker image rm $(docker image ls -a -q)   # Remove all images from this machine
 docker login             # Log in this CLI session using your Docker credentials
 docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry

@@ -24,16 +24,18 @@ from app import app
 # res = es.index(index="algorithms", doc_type='algo', id=1, body=document)
 # print(res['result'])
 
-LOCAL = True
+#LOCAL = True
 
-es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
+#es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
 #es_client = Elasticsearch('http://localhost:9200')
 
-print(es_client.ping())  
+#print(es_client.ping())  
 
-app.config["MONGO_URI"] = "mongodb://localhost:27018/test"
+# app.config["MONGO_URI"] = "mongodb://localhost:27018/test"
+# mongo = PyMongo(app)
+
+app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
 mongo = PyMongo(app)
-
 
 
 #app.config['MONGO_URI'] = os.environ.get('DB')

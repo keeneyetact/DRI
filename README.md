@@ -18,6 +18,10 @@ Create a Flask web-app to display the data.
 
 The user likes series he loves (through Elasticsearch), the app match the bests series to watch.
 
+### Home Page
+
+![Home page](img/homepage.jpg)
+
 # Run the project
 
 Clone it :
@@ -26,8 +30,17 @@ Clone it :
 git clone https://github.com/v-barbosavaz/DRIO4302C
 ```
 
-Then :
+## From Docker
 
 ```bash
+cd DRIO4302C
 docker-compose up -d
+```
+
+## Locally
+
+```bash
+cd DRIO4302C
+pipenv shell
+pipenv run python run.py
 ```
