@@ -15,9 +15,9 @@ COPY . /app
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Lancement de l'app
-ENTRYPOINT ["python"]
+#ENTRYPOINT ["python"]
 #CMD ["python", "run.py"]
-CMD ["run.py"]
+#CMD ["run.py"]
 
 
 #############################
