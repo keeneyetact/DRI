@@ -1,10 +1,11 @@
 # IMDb_app
 
 - Course : DRIO-4302C Data Engineering
+- February 3, 2019
 - Students : Vincent Barbosa Vaz, William Cardoso
 - Teacher : Daniel Courivaud, Raphaël Courivaud
 
-# DISCLAIMER
+## DISCLAIMER
 
 This project is for informational and educational purposes, do not use it for business purposes.
 
@@ -21,6 +22,10 @@ The user likes series he loves (through Elasticsearch), the app match the bests 
 ### Home Page
 
 ![Home page](img/homepage.jpg)
+
+### Title selection
+
+![Title](img/title.jpg)
 
 # Run the project
 
