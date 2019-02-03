@@ -1,26 +1,56 @@
 # REFERENCE GUIDE
-Documentation du code. Répliquer le projet.  
+
+Document à destination des développeurs. Vous trouverez toutes les informations nécessaires pour reproduire un projet similaire.
 
 ## Github
 
-On clone le projet :
+Créez un repository sur Github. Puis clonez-le sur votre machine :
 
 ```bash
 git clone https://github.com/v-barbosavaz/DRIO4302C
 ```
 
+### Commandes utiles :
+
+Se déplacer dans le répertoire de travail :
+
 ```bash
-cd DRIO4302C/  
-find . -name '.DS_Store' -type f -delete  
-touch .gitignore  
-open .gitignore  
-cat .gitignore  
-git add .  
-git commit -m "initial commit"  
-git push -u origin master  
+cd DRIO4302C/
 ```
 
-https://github.com/github/gitignore
+Supprimer les fichiers cachés _DS_Store_ récursivement :
+
+```bash
+find . -name '.DS_Store' -type f -delete  
+```
+
+Créer un fichier _.gitignore_ :
+
+```bash
+touch .gitignore
+```
+
+Ouvrir le fichier : 
+
+```bash
+open .gitignore
+```
+
+Ecrivez dans ce fichier tout ce qui doit être ignoré par Git. Pour en savoir plus : https://github.com/github/gitignore
+
+Regardez ce que contient le fichier :
+
+```bash 
+cat .gitignore
+```
+
+Un workflow assez simple d'utilisation de Git :
+
+```bash
+git add .
+git commit -m "initial commit"
+git push -u origin master
+```
 
 ## Pipenv
 
@@ -43,26 +73,27 @@ python -m pip install pipenv --user
 pipenv install
 ```
 
-lancer un terminal à l'interieur de cet environnment
+Lancer un terminal à l'interieur de cet environnment :
 ```bash
 pipenv shell
 ```
 
-installer de nouvelles librairies
+Installer de nouvelles librairies :
 ```bash
 pipenv install <votre_librairie>
 ```
 
-sortir du shell
+Sortir du shell :
 ```bash
 Ctrl + D
 ```
 
-Producing a requirements.txt file
+Produire une fichier requirements.txt qui contient toutes les librairies et dépendances nécessaires pour faire tourner le projet :
 ```bash
 pipenv lock -r > requirements.txt
 ```
 
+Une autre façon de le faire :
 ```bash
 pipenv lock --requirements > requirements.txt
 ```
@@ -93,10 +124,16 @@ quit()
 ctrl-c
 ```
 
+### Lancer mongo dans docker
 
-
+```bash
+docker-compose run mongo /bin/bash
+mongo
+```
 
 ## Scrapy
+
+Ce framework va nous permettre de récupérer des données des sites web.
 
 ```bash
 pipenv install scrapy
@@ -150,6 +187,8 @@ http://jsfiddle.net/vxvyvyer/1/
 pipenv install elasticsearch --skip-lock
 ```
 
+https://docs.docker.com/get-started/part2/
+
 ## Termes
 
 Boilerplate
@@ -195,6 +234,11 @@ run app :
 ```bash
 docker run -p 5000:5000 -it drio4302c_app
 ```
+
+http://0.0.0.0:5000/
+
+http://localhost:9200/
+
 
 ## Mac
 

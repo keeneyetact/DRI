@@ -10,9 +10,6 @@ COPY . /app
 #ENV http_proxy http://147.215.1.189:3128
 #@ENV https_proxy http://147.215.1.189:3128
 
-#COPY run.py .
-#COPY requirements.txt .
-
 # Install any needed packages specified in requirements.txt
 # Dependances extraites de l'environnement pipenv
 RUN pip install --upgrade pip && pip install -r requirements.txt
@@ -21,8 +18,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 ENTRYPOINT ["python"]
 #CMD ["python", "run.py"]
 CMD ["run.py"]
-
-
 
 
 #############################

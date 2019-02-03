@@ -4,9 +4,11 @@
 from flask import Flask, render_template, \
 request, url_for, make_response, redirect
 from elasticsearch import Elasticsearch
+from elasticsearch.helpers import bulk
 from flask_pymongo import PyMongo
-
+import os
 from app import app
+
 
 #es = Elasticsearch('http://localhost:9200')
 #es = Elasticsearch(hosts="localhost")
@@ -24,13 +26,21 @@ from app import app
 
 LOCAL = True
 
-#es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
+es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
 #es_client = Elasticsearch('http://localhost:9200')
 
-#es_client.ping()
+print(es_client.ping())  
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
 mongo = PyMongo(app)
+
+
+
+#app.config['MONGO_URI'] = os.environ.get('DB')
+
+
+#client = MongoClient('localhost', 27017)
+#mongo = client['test']
 
 # @app.route("/")
 # def hello():
@@ -40,11 +50,19 @@ mongo = PyMongo(app)
 # def hello_name(name):
 #     return "Hello {}!".format(name)
 
-def unlike(id_title):
-    try:
-        like = request.cookies.get(id_title)
-    except Exception as e:
-        print(0)
+
+
+# @app.route('/')
+# def index():
+#     return '<h1>welcome '+'test'+'</h1>'
+
+
+
+# def unlike(id_title):
+#     try:
+#         like = request.cookies.get(id_title)
+#     except Exception as e:
+#         print(0)
 
 
 

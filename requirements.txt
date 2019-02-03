@@ -8,8 +8,8 @@ constantly==15.1.0
 cryptography==2.5
 cssselect==1.0.3
 elasticsearch==6.3.1
+flask-pymongo==2.2.0
 flask==1.0.2
-Flask-PyMongo==2.2.0
 hyperlink==18.0.0
 idna==2.8
 incremental==17.5.0
