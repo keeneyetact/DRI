@@ -4,14 +4,14 @@ Document à destination des développeurs. Vous trouverez toutes les information
 
 # Table of contents
 1. [Github](#github)
-2. [Commandes utiles](#1)
-3. [Pipenv](#2)
-4. [Flask](#3)
-5. [MongoDB](#4)
-6. [Scrapy](#5)
-7. [Pymongo](#6)
-8. [Docker](#7)
-	1. [Cheat sheet Docker](#2)
+2. [Commandes utiles](#commandes-utiles)
+3. [Pipenv](#pipenv)
+4. [Flask](#flask)
+5. [MongoDB](#mongodb)
+6. [Scrapy](#scrapy)
+7. [Pymongo](#pymongo)
+8. [Docker](#docker)
+	8.1 [Cheat sheet Docker](#cheat-sheet-docker)
 
 <a name="github"></a>
 ## Github
@@ -252,15 +252,6 @@ https://bootsnipp.com/snippets/zDQkr
 
 ## Lancer le projet
 
-```bash
-pipenv run python run.py
-```
-
-build l'image :
-
-```bash
-docker-compose up
-``` 
 
 run app :
 
