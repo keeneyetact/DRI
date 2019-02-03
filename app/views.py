@@ -9,15 +9,33 @@ from flask_pymongo import PyMongo
 import os
 from app import app
 
-LOCAL = True
 
-es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
+#es = Elasticsearch('http://localhost:9200')
+#es = Elasticsearch(hosts="localhost")
+# es = Elasticsearch('10.0.1.10', port=9200)
 
-print(es_client.ping())
+
+# document = {
+#     "name":"Decision Trees",
+#     "description":"A decision tree is a decision support tool that uses a tree-like graph or model of decisions and their possible consequences, including chance-event outcomes, resource costs, and utility. Take a look at the image to get a sense of how it looks like.",
+#     "algo_type":"Supervised Learning"
+# }
+
+# res = es.index(index="algorithms", doc_type='algo', id=1, body=document)
+# print(res['result'])
+
+#LOCAL = True
+
+#es_client = Elasticsearch(hosts=["localhost" if LOCAL else "elasticsearch"])
+#es_client = Elasticsearch('http://localhost:9200')
+
+#print(es_client.ping())
+
+# app.config["MONGO_URI"] = "mongodb://localhost:27018/test"
+# mongo = PyMongo(app)
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/test"
 mongo = PyMongo(app)
-
 
 @app.route('/search/results', methods=['GET', 'POST'])
 def search_request():
