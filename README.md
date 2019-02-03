@@ -9,6 +9,17 @@
 
 This project is for informational and educational purposes, do not use it for business purposes.
 
+## Tasks
+
+- [x] IMDb scraping with Scrapy
+- [x] Flask application
+- [x] MongoDB database
+- [ ] Docker
+	- [x] docker-compose.yml
+	- [x] Dockerfile
+	- [ ] run mongodb inside Docker
+	- [ ] run elasticsearch inside Docker
+
 ## The project
 
 Crawling/scraping of [IMDb](https://www.imdb.com/) for series, with Scrapy.
