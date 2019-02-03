@@ -11,20 +11,4 @@ COPY . /app
 #@ENV https_proxy http://147.215.1.189:3128
 
 # Install any needed packages specified in requirements.txt
-# Dependances extraites de l'environnement pipenv
 RUN pip install --upgrade pip && pip install -r requirements.txt
-
-# Lancement de l'app
-#ENTRYPOINT ["python"]
-#CMD ["python", "run.py"]
-#CMD ["run.py"]
-
-
-#############################
-
-# Installation de la db mongo
-#RUN apt-get update
-#RUN apt-get install -y mongodb
-
-# Démarrage de la db
-#RUN service mongodb start

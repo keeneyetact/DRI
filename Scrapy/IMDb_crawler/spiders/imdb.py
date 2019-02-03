@@ -24,8 +24,6 @@ class ImdbSpider(scrapy.Spider):
 
                 image = tv_serie.css(".lister-item-image a img")
 
-                #image_url = image.css("::attr(src)").extract_first()
-
                 id = image.css("::attr(data-tconst)").extract_first()
 
                 tv_serie_link = content.css("h3 a::attr(href)").extract_first()
@@ -37,20 +35,14 @@ class ImdbSpider(scrapy.Spider):
                     "popularity_rank":rank,
                     "title":title,
                     "year":year,
-                    #"image_url":image_url,
                     "duration":duration,
                     "genre":genre,
                     "recommandations":self.get_more(response),
                     "description":description
                 }
-                # meta nous permet de ne pas yield toute suite les informations
-                # on effectue une requete sur la page de la serie elle-même pour scraper plus d'infos
-                #yield data
-
                 yield Request(tv_serie_link, callback=self.get_more, meta={"infos":data})
 
             except:
-                #yield {"error":rank}
                 pass
 
         next_url = response.xpath('//*[@id="main"]/div/div[1]/div[2]/a')[-1].css('::attr(href)').extract_first()

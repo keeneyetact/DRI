@@ -12,7 +12,6 @@
 			<div class="row">
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
-			<!--<div class="col-md-6 col-md-offset-3">-->
 			<form class="navbar-form" method="post" action="{{ url_for('search') }}" role="search">
 			<div class="input-group">
 
@@ -34,7 +33,6 @@
 
 
 			<span class="input-group-btn">
-			<!-- <button class="btn btn-primary" type="button"><img src="/static/open-iconic/svg/star.svg" alt="star"></button> -->
 			<button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button>
 			</span>
 			</div>
@@ -52,7 +50,6 @@
 
                       <div class="col-s-3 mt-5 ml-3 mr-3 mb-2 ">
                         <div class="card border-primary">
-                          <!-- <button class="btn btn-primary" type="button"><span class="oi oi-star" title="star" aria-hidden="true"></span></button> -->
 
                           <form action = "/title" method = "POST">
                             <input type="hidden" name="nm" value="{{ IMDB_id }}" />
@@ -76,7 +73,6 @@
 
                       <div class="col-lg-5 mt-5 mr-2">
                         <div class="d-inline-flex justify-content-center">
-                          <!-- <p><b>Description:</b>{{ description }}</p> -->
                           <p ><b>Storyline:  </b>{{ storyline }}</p>
                         </div>
                       </div>
@@ -101,30 +97,8 @@
                             {% endfor %}
                         </ul>
                       </div>
-                      <!-- <div class="col-md-4">
-                      <ul>
-                        {% for r in l_rec%}
-                            <li><a href="{{ url_for('title', title=r[1])}}">{{ r[0] }}</a></li>
-                        {% endfor %}
-                      </ul>
-                      </div> -->
 
                     </div>
-                    <!-- end row -->
-
-
-                    <!-- <div class="row">
-                      {% for r in l_rec%}
-                            <div class="card ml-3 mr-3 mb-2 border-primary">
-                              <a href="{{ url_for('title', title=r["IMDB_id"])}}"><img class="card-img-top  rounded mx-auto d-block"  style="max-width: 70%; height: auto;" src="{{r["image_url"]}}" alt=""></a>
-                              <div class="card-body mx-auto">
-                                <a href="{{ url_for('title', title=r["IMDB_id"])}}">{{ r["title"] }}</a>
-                              </div>
-                            </div>
-                      {% endfor %}
-                    </div> -->
-                    <!-- end row -->
-
                 </div>
         </div>
     </div>

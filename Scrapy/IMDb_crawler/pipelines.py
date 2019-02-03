@@ -4,7 +4,6 @@ import pymongo
 class MongoPipeline(object):
 
     collection_name = 'tv_series'
-    #collection_name = 'trucbidon'
 
     def open_spider(self, spider):
         self.client = pymongo.MongoClient()
@@ -30,7 +29,6 @@ class TextPipeline(object):
         if item['recommandations']:
             item['recommandations'] = [i.replace('tt','') for i in item['recommandations']]
         return item
-        #else: raise
 
     def clean(self,string_):
         cleaned = string_.replace("\n",'')
